@@ -23,11 +23,6 @@
 	url = git@github.com:promcteam/problockregen.git
 	branch = dev
 	update = rebase
-[submodule "promcutilities"]
-	path = promcutilities
-	url = git@github.com:promcteam/promcutilities
-	branch = dev
-	update = rebase
 [submodule "fabled-quests"]
 	path = fabled-quests
 	url = git@github.com:promcteam/ProSkillAPI-QuestsModule.git

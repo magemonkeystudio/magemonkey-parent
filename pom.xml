@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.promcteam</groupId>
-    <artifactId>promc-parent</artifactId>
-    <version>1.20.4-R1-SNAPSHOT</version>
+    <groupId>studio.magemonkey</groupId>
+    <artifactId>magemonkey-parent</artifactId>
+    <version>1.20.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>ProMC Parent</name>
-    <description>The parent artifact for ProMCTeam modules</description>
-    <url>https://github.com/promcteam/promc-parent</url>
+    <name>Mage Monkey Parent</name>
+    <description>The parent artifact for Mage Monkey Studios modules</description>
+    <url>https://github.com/promcteam/magemonkey-parent</url>
 
     <properties>
         <java.version>11</java.version>
@@ -126,25 +126,25 @@
         <dependencies>
             <!-- Internal Dependencies -->
             <dependency>
-                <groupId>com.promcteam</groupId>
+                <groupId>studio.magemonkey</groupId>
                 <artifactId>codex</artifactId>
                 <version>${codex.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.promcteam</groupId>
+                <groupId>studio.magemonkey</groupId>
                 <artifactId>fabled</artifactId>
                 <version>${fabled.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.promcteam</groupId>
+                <groupId>studio.magemonkey</groupId>
                 <artifactId>fabled-parties</artifactId>
                 <version>${fabled-parties.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>com.promcteam</groupId>
+                <groupId>studio.magemonkey</groupId>
                 <artifactId>divinity</artifactId>
                 <version>${divinity.version}</version>
                 <scope>provided</scope>
@@ -599,9 +599,9 @@
 
     <developers>
         <developer>
-            <name>ProMCTeam</name>
-            <organization>ProMCTeam</organization>
-            <organizationUrl>https://promcteam.com</organizationUrl>
+            <name>Mage Monkey Studios</name>
+            <organization>Mage Monkey Studios</organization>
+            <organizationUrl>https://magemonkey.studio</organizationUrl>
         </developer>
     </developers>
 

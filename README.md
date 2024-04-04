@@ -9,8 +9,8 @@ everything in a central location, we can easily centralize dependencies, version
 To clone down the whole project, run the following script:
 
 ```bash
-git clone --recurse-submodules git@github.com:promcteam/promc-parent.git \
-  && cd promc-parent \
+git clone --recurse-submodules git@github.com:promcteam/magemonkey-parent.git \
+  && cd magemonkey-parent \
   && git submodule foreach -q --recursive \
     'git switch \
     $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master)'
@@ -33,8 +33,8 @@ should be favored in most instances. You can go into each submodule and run
 or you can run a modified version of the script from above
 
 ```bash
-git clone --recurse-submodules git@github.com:promcteam/promc-parent.git \
-  && cd promc-parent \
+git clone --recurse-submodules git@github.com:promcteam/magemonkey-parent.git \
+  && cd magemonkey-parent \
   && git submodule foreach -q --recursive \
     'git switch \
     $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master) \

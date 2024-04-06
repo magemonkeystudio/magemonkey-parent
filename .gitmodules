@@ -1,44 +1,65 @@
-[submodule "promccore"]
-	path = promccore
+[submodule "codex"]
+	path = codex
 	url = git@github.com:promcteam/promccore.git
-	branch = master
+	branch = dev
 	update = rebase
-[submodule "prorpgitems"]
-	path = prorpgitems
+[submodule "divinity"]
+	path = divinity
 	url = git@github.com:promcteam/prorpgitems.git
-	branch = main
+	branch = dev
 	update = rebase
-[submodule "proskillapi"]
-	path = proskillapi
+[submodule "fabled"]
+	path = fabled
 	url = git@github.com:promcteam/proskillapi.git
-	branch = master
+	branch = dev
 	update = rebase
-[submodule "proskillapiparties"]
-	path = proskillapiparties
+[submodule "fabled-parties"]
+	path = fabled-parties
 	url = git@github.com:promcteam/proskillapiparties.git
-	branch = master
+	branch = dev
 	update = rebase
-[submodule "problockregen"]
-	path = problockregen
-	url = git@github.com:promcteam/problockregen
-	branch = master
-[submodule "promcutilities"]
-	path = promcutilities
-	url = git@github.com:promcteam/promcutilities
-	branch = master
-[submodule "proenchantmentapi"]
-	path = proenchantmentapi
-	url = git@github.com:promcteam/proenchantmentapi
-	branch = master
-[submodule "ProSchematicBuilder"]
-	path = ProSchematicBuilder
-	url = git@github.com:promcteam/proschematicbuilder
-	branch = master
-[submodule "ProSkillAPI-QuestsModule"]
-	path = ProSkillAPI-QuestsModule
-	url = git@github.com:promcteam/proskillapi-questsmodule
-	branch = master
-[submodule "prorpgcrafting"]
-	path = prorpgcrafting
-	url = git@github.com:promcteam/prorpgcrafting
-	branch = master
+[submodule "mirage"]
+	path = mirage
+	url = git@github.com:promcteam/problockregen.git
+	branch = dev
+	update = rebase
+[submodule "fabled-quests"]
+	path = fabled-quests
+	url = git@github.com:promcteam/ProSkillAPI-QuestsModule.git
+	branch = dev
+	update = rebase
+[submodule "genesis"]
+	path = genesis
+	url = git@github.com:promcteam/bosshoppro.git
+	branch = dev
+	update = rebase
+[submodule "fusion"]
+	path = fusion
+	url = git@github.com:promcteam/prorpgcrafting.git
+	branch = dev
+	update = rebase
+[submodule "fabled-enchants"]
+	path = fabled-enchants
+	url = git@github.com:promcteam/proenchantmentapi.git
+	branch = dev
+	update = rebase
+[submodule "sapphire"]
+	path = sapphire
+	url = git@github.com:promcteam/promcutilities.git
+	branch = dev
+	update = rebase
+[submodule "blueprint"]
+	path = blueprint
+	url = git@github.com:promcteam/ProSchematicBuilder.git
+	branch = dev
+	update = rebase
+[submodule "homestead"]
+	path = homestead
+	url = git@github.com:promcteam/promchousing.git
+	branch = dev
+	update = rebase
+[submodule "enigma"]
+	path = enigma
+	url = git@github.com:promcteam/prorandomchests.git
+	branch = dev
+	update = rebase

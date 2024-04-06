@@ -5,10 +5,12 @@ that those wanting to contribute have to go through to configure their work envi
 everything in a central location, we can easily centralize dependencies, versioning, etc.
 
 ## Cloning & Building
+
 To clone down the whole project, run the following script:
+
 ```bash
-git clone --recurse-submodules git@github.com:promcteam/promc-parent.git \
-  && cd promc-parent \
+git clone --recurse-submodules git@github.com:promcteam/magemonkey-parent.git \
+  && cd magemonkey-parent \
   && git submodule foreach -q --recursive \
     'git switch \
     $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master)'
@@ -22,15 +24,17 @@ Packages authentication has been set up, everything should be pretty seamless an
 directory containing all the built plugins, ready to go!
 
 ## Final Touches
+
 *This really only applies if you plan to contribute to the project.
 
 By default, Git automatically checks out submodules using https as opposed to SSH. SSH is more secure and
 should be favored in most instances. You can go into each submodule and run
 `git remote set-url origin git@github.com:promcteam/REPO.git`
 or you can run a modified version of the script from above
+
 ```bash
-git clone --recurse-submodules git@github.com:promcteam/promc-parent.git \
-  && cd promc-parent \
+git clone --recurse-submodules git@github.com:promcteam/magemonkey-parent.git \
+  && cd magemonkey-parent \
   && git submodule foreach -q --recursive \
     'git switch \
     $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master) \

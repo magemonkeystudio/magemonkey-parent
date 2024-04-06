@@ -1,5 +1,7 @@
+build/
 ProBuilds/
 DarkRise-Jars/
 target/
 .idea/
 *.iml
+**/gh-pages

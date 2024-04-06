@@ -28,11 +28,6 @@
 	url = git@github.com:promcteam/fabled-quests.git
 	branch = dev
 	update = rebase
-[submodule "genesis"]
-	path = genesis
-	url = git@github.com:promcteam/bossshoppro.git
-	branch = dev
-	update = rebase
 [submodule "fusion"]
 	path = fusion
 	url = git@github.com:promcteam/fusion.git
@@ -63,3 +58,20 @@
 	url = git@github.com:promcteam/enigma.git
 	branch = dev
 	update = rebase
+[submodule "genesis"]
+	path = genesis-parent/genesis
+	url = git@github.com:promcteam/bossshoppro.git
+	branch = dev
+	update = rebase
+[submodule "genesis-parent/genesis-playershops"]
+	path = genesis-parent/genesis-playershops
+	url = git@github.com:promcteam/BSP-PlayerShopsPro.git
+[submodule "genesis-parent/genesis-limiteduses"]
+	path = genesis-parent/genesis-limiteduses
+	url = git@github.com:promcteam/BSP-LimitedUsesPro.git
+[submodule "genesis-parent/genesis-multiplecurrencies"]
+	path = genesis-parent/genesis-multiplecurrencies
+	url = git@github.com:promcteam/BSP-ThirdCurrencyPro.git
+[submodule "genesis-parent/genesis-inventorycommands"]
+	path = genesis-parent/genesis-inventorycommands
+	url = git@github.com:promcteam/BSP-GUIShopManagerPro.git

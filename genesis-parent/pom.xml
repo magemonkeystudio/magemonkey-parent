@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>studio.magemonkey</groupId>
+        <artifactId>magemonkey-parent</artifactId>
+        <version>1.20.4-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>genesis-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <genesis.version>1.0.0-R0.1-SNAPSHOT</genesis.version>
+    </properties>
+
+    <modules>
+        <module>genesis</module>
+
+        <module>genesis-multiplecurrencies</module>
+        <module>genesis-limiteduses</module>
+        <module>genesis-inventorycommands</module>
+        <module>genesis-playershops</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>studio.magemonkey</groupId>
+            <artifactId>genesis</artifactId>
+            <version>${genesis.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

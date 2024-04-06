@@ -30,7 +30,7 @@
 	update = rebase
 [submodule "genesis"]
 	path = genesis
-	url = git@github.com:promcteam/bosshoppro.git
+	url = git@github.com:promcteam/bossshoppro.git
 	branch = dev
 	update = rebase
 [submodule "fusion"]

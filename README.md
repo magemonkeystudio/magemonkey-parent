@@ -1,6 +1,6 @@
-# ProMC Suite of Plugins
+# MageMonkey Suite of Plugins
 
-This repository aims to act as the home to our most popular ProMC plugins. The aim is to simplify the process
+This repository aims to act as the home to our most popular Mage Monkey plugins. The aim is to simplify the process
 that those wanting to contribute have to go through to configure their work environment. By providing
 everything in a central location, we can easily centralize dependencies, versioning, etc.
 
@@ -13,7 +13,7 @@ git clone --recurse-submodules git@github.com:promcteam/magemonkey-parent.git \
   && cd magemonkey-parent \
   && git submodule foreach -q --recursive \
     'git switch \
-    $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master)'
+    $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo dev)'
 ```
 
 This looks like a lot of code, but it simply clones down the whole architecture and makes sure that the
@@ -37,6 +37,6 @@ git clone --recurse-submodules git@github.com:promcteam/magemonkey-parent.git \
   && cd magemonkey-parent \
   && git submodule foreach -q --recursive \
     'git switch \
-    $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master) \
+    $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo dev) \
     && git remote set-url origin git@github.com:promcteam/$name.git'
 ```

@@ -1,31 +1,31 @@
 [submodule "codex"]
 	path = codex
-	url = git@github.com:promcteam/promccore.git
+	url = git@github.com:promcteam/codex.git
 	branch = dev
 	update = rebase
 [submodule "divinity"]
 	path = divinity
-	url = git@github.com:promcteam/prorpgitems.git
+	url = git@github.com:promcteam/divinity.git
 	branch = dev
 	update = rebase
 [submodule "fabled"]
 	path = fabled
-	url = git@github.com:promcteam/proskillapi.git
+	url = git@github.com:promcteam/fabled.git
 	branch = dev
 	update = rebase
 [submodule "fabled-parties"]
 	path = fabled-parties
-	url = git@github.com:promcteam/proskillapiparties.git
+	url = git@github.com:promcteam/fabled-parties.git
 	branch = dev
 	update = rebase
 [submodule "mirage"]
 	path = mirage
-	url = git@github.com:promcteam/problockregen.git
+	url = git@github.com:promcteam/mirage.git
 	branch = dev
 	update = rebase
 [submodule "fabled-quests"]
 	path = fabled-quests
-	url = git@github.com:promcteam/ProSkillAPI-QuestsModule.git
+	url = git@github.com:promcteam/fabled-quests.git
 	branch = dev
 	update = rebase
 [submodule "genesis"]
@@ -35,31 +35,31 @@
 	update = rebase
 [submodule "fusion"]
 	path = fusion
-	url = git@github.com:promcteam/prorpgcrafting.git
+	url = git@github.com:promcteam/fusion.git
 	branch = dev
 	update = rebase
 [submodule "fabled-enchants"]
 	path = fabled-enchants
-	url = git@github.com:promcteam/proenchantmentapi.git
+	url = git@github.com:promcteam/fabled-enchants.git
 	branch = dev
 	update = rebase
 [submodule "sapphire"]
 	path = sapphire
-	url = git@github.com:promcteam/promcutilities.git
+	url = git@github.com:promcteam/sapphire.git
 	branch = dev
 	update = rebase
 [submodule "blueprint"]
 	path = blueprint
-	url = git@github.com:promcteam/ProSchematicBuilder.git
+	url = git@github.com:promcteam/blueprint.git
 	branch = dev
 	update = rebase
 [submodule "homestead"]
 	path = homestead
-	url = git@github.com:promcteam/promchousing.git
+	url = git@github.com:promcteam/homestead.git
 	branch = dev
 	update = rebase
 [submodule "enigma"]
 	path = enigma
-	url = git@github.com:promcteam/prorandomchests.git
+	url = git@github.com:promcteam/enigma.git
 	branch = dev
 	update = rebase

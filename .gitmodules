@@ -75,3 +75,6 @@
 [submodule "genesis-parent/genesis-inventorycommands"]
 	path = genesis-parent/genesis-inventorycommands
 	url = git@github.com:promcteam/BSP-GUIShopManagerPro.git
+[submodule "genesis-parent/genesis-quickshops"]
+	path = genesis-parent/genesis-quickshops
+	url = git@github.com:promcteam/BSP-ItemShops.git

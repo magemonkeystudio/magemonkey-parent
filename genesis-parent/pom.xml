@@ -23,6 +23,7 @@
         <module>genesis-limiteduses</module>
         <module>genesis-inventorycommands</module>
         <module>genesis-playershops</module>
+        <module>genesis-quickshops</module>
     </modules>
 
     <dependencies>

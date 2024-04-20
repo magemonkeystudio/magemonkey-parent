@@ -1,6 +1,6 @@
 # MageMonkey Suite of Plugins
 
-This repository aims to act as the home to our most popular Mage Monkey plugins. The aim is to simplify the process
+This repository aims to act as the home to our most popular MageMonkey plugins. The aim is to simplify the process
 that those wanting to contribute have to go through to configure their work environment. By providing
 everything in a central location, we can easily centralize dependencies, versioning, etc.
 

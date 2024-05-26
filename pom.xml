@@ -307,7 +307,7 @@
             <dependency>
                 <groupId>com.github.seeseemelk</groupId>
                 <artifactId>MockBukkit-v1.20</artifactId>
-                <version>3.77.0</version>
+                <version>3.86.1</version>
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>
@@ -548,6 +548,13 @@
                             </goals>
                         </execution>
                     </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

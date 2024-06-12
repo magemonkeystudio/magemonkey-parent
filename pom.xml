@@ -18,9 +18,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
 
-        <codex.version>1.0.0-R0.14-SNAPSHOT</codex.version>
-        <divinity.version>1.0.0-R0.1-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.0-R0.1-SNAPSHOT</fabled.version>
+        <codex.version>1.0.0-R0.17-SNAPSHOT</codex.version>
+        <divinity.version>1.0.0-R0.17-SNAPSHOT</divinity.version>
+        <fabled.version>1.0.0-R0.32-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.0-R0.1-SNAPSHOT</fabled-parties.version>
 
         <spigot.version>1.20.6-R0.1-SNAPSHOT</spigot.version>

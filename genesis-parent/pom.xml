@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <genesis.version>1.0.0-R0.1-SNAPSHOT</genesis.version>
+        <genesis.version>1.0.0-R0.8-SNAPSHOT</genesis.version>
     </properties>
 
     <modules>

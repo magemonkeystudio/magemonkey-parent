@@ -19,6 +19,8 @@
     <modules>
         <module>genesis</module>
 
+        <module>folia-bridge</module>
+
         <module>genesis-multiplecurrencies</module>
         <module>genesis-limiteduses</module>
         <module>genesis-inventorycommands</module>

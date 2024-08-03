@@ -78,3 +78,6 @@
 [submodule "genesis-parent/genesis-quickshops"]
 	path = genesis-parent/genesis-quickshops
 	url = git@github.com:promcteam/BSP-ItemShops.git
+[submodule "genesis-parent/folia-bridge"]
+	path = genesis-parent/folia-bridge
+	url = https://github.com/magemonkeystudio/folia-bridge

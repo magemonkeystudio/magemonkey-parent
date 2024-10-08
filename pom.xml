@@ -25,6 +25,9 @@
 
         <spigot.version>1.21.1-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.1-SNAPSHOT</bungee.version>
+
+        <mockbukkit.version>3.127.1</mockbukkit.version>
+
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.14.0</apache.version>
         <lombok.version>1.18.34</lombok.version>
@@ -63,6 +66,11 @@
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <!-- LibsDisguises (and others?) -->
+        <repository>
+            <id>md_5-public</id>
+            <url>https://repo.md-5.net/content/groups/public/</url>
         </repository>
         <!-- Bungee Repo -->
         <repository>
@@ -313,7 +321,7 @@
             <dependency>
                 <groupId>com.github.seeseemelk</groupId>
                 <artifactId>MockBukkit-v1.21</artifactId>
-                <version>3.120.2</version>
+                <version>${mockbukkit.version}</version>
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>

@@ -1,6 +1,6 @@
 [submodule "codex"]
 	path = codex
-	url = git@github.com:magemonkeystudio/codex.git
+	url = https://github.com/magemonkeystudio/codex
 	branch = dev
 	update = rebase
 [submodule "divinity"]

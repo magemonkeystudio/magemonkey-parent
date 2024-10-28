@@ -80,4 +80,4 @@
 	url = git@github.com:magemonkeystudio/genesis-quickshops.git
 [submodule "genesis-parent/folia-bridge"]
 	path = genesis-parent/folia-bridge
-	url = git@github.com:magemonkeystudio/folia-bridge.git
+	url = git@github.com:magemonkeystudio/folia-bridge

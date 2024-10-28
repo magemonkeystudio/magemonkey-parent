@@ -26,7 +26,7 @@
         <spigot.version>1.21.1-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.1-SNAPSHOT</bungee.version>
 
-        <mockbukkit.version>3.127.1</mockbukkit.version>
+        <mockbukkit.version>3.133.2</mockbukkit.version>
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.14.0</apache.version>

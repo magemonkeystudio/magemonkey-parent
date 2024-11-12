@@ -1,6 +1,6 @@
 [submodule "codex"]
 	path = codex
-	url = https://github.com/magemonkeystudio/codex
+	url = https://github.com/magemonkeystudio/codex.git
 	branch = dev
 	update = rebase
 [submodule "divinity"]
@@ -80,4 +80,4 @@
 	url = git@github.com:magemonkeystudio/genesis-quickshops.git
 [submodule "genesis-parent/folia-bridge"]
 	path = genesis-parent/folia-bridge
-	url = git@github.com:magemonkeystudio/folia-bridge
+	url = git@github.com:magemonkeystudio/folia-bridge.git

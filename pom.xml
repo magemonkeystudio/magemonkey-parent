@@ -6,27 +6,27 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.3-R0.2</version>
+    <version>1.21.4-R0.1</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
     <description>The parent artifact for MageMonkeyStudio modules</description>
-    <url>https://github.com/promcteam/magemonkey-parent</url>
+    <url>https://github.com/magemonkeystudio/magemonkey-parent</url>
 
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
 
-        <codex.version>1.0.1-R0.15-SNAPSHOT</codex.version>
+        <codex.version>1.1.0-R0.2-SNAPSHOT</codex.version>
         <divinity.version>1.0.2-R0.13-SNAPSHOT</divinity.version>
         <fabled.version>1.0.4-R0.8-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.0-R0.1-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.3-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.21.4-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.1-SNAPSHOT</bungee.version>
 
-        <mockbukkit.version>4.3.1</mockbukkit.version>
+        <mockbukkit.version>4.15.0</mockbukkit.version>
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.14.0</apache.version>
@@ -405,7 +405,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.10.1</version>
+                        <version>3.11.1</version>
                         <configuration>
                             <outputDirectory>gh-pages</outputDirectory>
                             <doclint>all,-missing</doclint>
@@ -521,7 +521,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.2</version>
                 <configuration>
                     <outputDirectory>${outputDir}</outputDirectory>
                 </configuration>
@@ -580,15 +580,6 @@
                                 <goal>shade</goal>
                             </goals>
                             <configuration>
-                                <filters>
-                                    <filter>
-                                        <artifact>*:*</artifact>
-                                        <excludes>
-                                            <exclude>META-INF/*</exclude>
-                                            <exclude>LICENSE</exclude>
-                                        </excludes>
-                                    </filter>
-                                </filters>
                                 <artifactSet>
                                     <excludes>
                                         <exclude>cglib:cglib-nodep</exclude>
@@ -630,9 +621,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/promcteam/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:ssh://github.com:promcteam/${project.artifactId}.git</developerConnection>
-        <url>https://github.com/promcteam/${project.artifactId}</url>
+        <connection>scm:git:git://github.com/magemonkeystudio/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:ssh://github.com:magemonkeystudio/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/magemonkeystudio/${project.artifactId}</url>
     </scm>
 
     <distributionManagement>

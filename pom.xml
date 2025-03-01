@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.4-R0.3</version>
+    <version>1.21.4-R0.4</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
@@ -17,16 +17,17 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
+        <maven.compiler.proc>full</maven.compiler.proc>
 
-        <codex.version>1.1.0-R0.6-SNAPSHOT</codex.version>
-        <divinity.version>1.0.2-R0.13-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.4-R0.8-SNAPSHOT</fabled.version>
-        <fabled-parties.version>1.0.0-R0.1-SNAPSHOT</fabled-parties.version>
+        <codex.version>1.1.0-R0.17-SNAPSHOT</codex.version>
+        <divinity.version>1.0.2-R0.40-SNAPSHOT</divinity.version>
+        <fabled.version>1.0.4-R0.32-SNAPSHOT</fabled.version>
+        <fabled-parties.version>1.0.1-R0.6-SNAPSHOT</fabled-parties.version>
 
         <spigot.version>1.21.4-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.1-SNAPSHOT</bungee.version>
 
-        <mockbukkit.version>4.15.0</mockbukkit.version>
+        <mockbukkit.version>4.34.0</mockbukkit.version>
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.14.0</apache.version>
@@ -126,7 +127,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>24.1.0</version>
+            <version>26.0.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -250,7 +251,7 @@
             <dependency>
                 <groupId>io.lumine</groupId>
                 <artifactId>Mythic-Dist</artifactId>
-                <version>5.6.1</version>
+                <version>5.7.2</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -332,8 +333,8 @@
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
-                <artifactId>mockito-inline</artifactId>
-                <version>5.2.0</version>
+                <artifactId>mockito-core</artifactId>
+                <version>5.15.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

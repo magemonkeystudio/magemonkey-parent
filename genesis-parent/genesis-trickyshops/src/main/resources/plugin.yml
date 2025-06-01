@@ -1,0 +1,7 @@
+name: TrickyShops
+version: 1.0.0
+description: Genesis Addon
+authors: [MageMonkeyStudio, Black_ixx]
+website: https://magemonkey.studio
+main: studio.magemonkey.genesis.addon.trickyshops.TrickyShops
+depend: [Genesis]

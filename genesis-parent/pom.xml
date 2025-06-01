@@ -6,14 +6,14 @@
     <parent>
         <groupId>studio.magemonkey</groupId>
         <artifactId>magemonkey-parent</artifactId>
-        <version>1.21.4-R0.4</version>
+        <version>1.21.5-R0.1</version>
     </parent>
 
     <artifactId>genesis-parent</artifactId>
     <packaging>pom</packaging>
 
     <properties>
-        <genesis.version>1.0.0-R0.8-SNAPSHOT</genesis.version>
+        <genesis.version>1.0.2-R0.17-SNAPSHOT</genesis.version>
     </properties>
 
     <modules>
@@ -26,6 +26,7 @@
         <module>genesis-inventorycommands</module>
         <module>genesis-playershops</module>
         <module>genesis-quickshops</module>
+        <module>genesis-trickyshops</module>
     </modules>
 
     <dependencies>

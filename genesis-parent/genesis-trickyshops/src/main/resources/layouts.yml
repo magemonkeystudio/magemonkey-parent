@@ -1,0 +1,112 @@
+# You can create as many layouts as you want.
+layout_simple:
+  input:
+    Item: '[type]:[amount]:[durability]'
+    Price: '[buyprice]'
+    Name: '[name]'
+  output:
+    MenuItem:
+    - 'type:[type]'
+    - 'amount:[amount]'
+    - 'name:&4[amount] [name]'
+    - 'lore:&eBuy &b%reward% for &c%price%&e.'
+    - 'durability:[durability]'
+    InventoryLocation: 0
+    ExtraPermission: ''
+    PriceType: money
+    Price: '[buyprice]'
+    RewardType: item
+    Reward:
+    - - 'type:[type]'
+      - 'amount:[amount]'
+      - 'durability:[durability]'
+    Message: '&eYou bought %reward% for %price%.'
+layout_advanced:
+  input:
+    Item: '[type]:[amount]:[durability]'
+    Price: '[buyprice]:[sellprice]'
+    Name: '[name]'
+  output:
+    MenuItem:
+    - 'type:[type]'
+    - 'amount:[amount]'
+    - 'name:&4[amount] [name]'
+    - 'lore:&eClick &2left &eto buy &b%reward% for &c%price%&e.'
+    - 'lore:&eClick &2right &eto sell &c%price_right% for &b%reward_right%&e.'
+    - 'durability:[durability]'
+    InventoryLocation: 0
+    ExtraPermission: ''
+    PriceType: money
+    Price: '[buyprice]'
+    RewardType: item
+    Reward:
+    - - 'type:[type]'
+      - 'amount:[amount]'
+      - 'durability:[durability]'
+    Message: '&eYou bought %reward% for %price%.'
+    PriceType_right: item
+    Price_right: 
+    - - 'type:[type]'
+      - 'amount:[amount]'
+      - 'durability:[durability]'
+    RewardType_right: money
+    Reward_right: '[sellprice]'
+    Message_right: '&eYou sold %price% for %reward_right%.'
+layout_smart:
+  input:
+    Item: '[type]:[amount]:[durability]'
+    Worth: '[worth]'
+    Name: '[name]'
+    rest:
+    - '[buyprice]=[worth]*1.2'
+    - '[sellprice]=[worth]*0.6'
+  output:
+    MenuItem:
+    - 'type:[type]'
+    - 'amount:[amount]'
+    - 'name:&4[amount] [name]'
+    - 'lore:&eClick &2left &eto buy &b%reward% for &c%price%&e.'
+    - 'lore:&eClick &2right &eto sell &c%price_right% for &b%reward_right%&e.'
+    - 'durability:[durability]'
+    InventoryLocation: 0
+    ExtraPermission: ''
+    PriceType: money
+    Price: '[buyprice]'
+    RewardType: item
+    Reward:
+    - - 'type:[type]'
+      - 'amount:[amount]'
+      - 'durability:[durability]'
+    Message: '&eYou bought %reward% for %price%.'
+    PriceType_right: item
+    Price_right: 
+    - - 'type:[type]'
+      - 'amount:[amount]'
+      - 'durability:[durability]'
+    RewardType_right: money
+    Reward_right: '[sellprice]'
+    Message_right: '&eYou sold %price_right% for %reward_right%.'
+#
+#
+#
+# Here are a few example items that you can copy into your shops to test things out
+  exampleitem1:
+    Layout: layout_simple
+    Item: 'LOG:64:1'
+    Price: '60'
+    Name: 'Dark Log'
+  exampleitem2:
+    Layout: layout_advanced
+    Item: 'DIAMOND:10:0'
+    Price: '200:20'
+    Name: Diamonds
+  exampleitem3:
+    Layout: layout_advanced
+    Item: 'OBSIDIAN:20:0'
+    Price: '225:25'
+    Name: Obsidian
+  exampleitem4:
+    Layout: layout_smart
+    Item: '4:64:0'
+    Worth: '30'
+    Name: Cobblestone

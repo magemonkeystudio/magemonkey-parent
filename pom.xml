@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.5-R0.1</version>
+    <version>1.21.7-R0.1</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
@@ -19,20 +19,20 @@
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
         <maven.compiler.proc>full</maven.compiler.proc>
 
-        <codex.version>1.1.1-R0.1-SNAPSHOT</codex.version>
-        <divinity.version>1.0.2-R0.43-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.4-R0.47-SNAPSHOT</fabled.version>
+        <codex.version>1.1.1-R0.3-SNAPSHOT</codex.version>
+        <divinity.version>1.0.2-R0.45-SNAPSHOT</divinity.version>
+        <fabled.version>1.0.4-R0.56-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.5-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.21.7-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.1-SNAPSHOT</bungee.version>
 
-        <mockbukkit.version>4.34.0</mockbukkit.version>
+        <mockbukkit.version>4.61.0</mockbukkit.version>
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.14.0</apache.version>
         <lombok.version>1.18.36</lombok.version>
-        <nexus.url>https://s01.oss.sonatype.org</nexus.url>
+        <nexus.url>https://central.sonatype.com</nexus.url>
         <outputDir>../build</outputDir>
     </properties>
 
@@ -56,7 +56,7 @@
     <repositories>
         <repository>
             <id>sonatype</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         </repository>
         <!-- Spigot Repo -->
         <repository>
@@ -393,14 +393,14 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.7.0</version>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.8.0</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>central</serverId>
-                            <nexusUrl>${nexus.url}</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -626,15 +626,4 @@
         <developerConnection>scm:git:ssh://github.com:magemonkeystudio/${project.artifactId}.git</developerConnection>
         <url>https://github.com/magemonkeystudio/${project.artifactId}</url>
     </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>${nexus.url}/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>${nexus.url}/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>

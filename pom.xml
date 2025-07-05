@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.7-R0.1</version>
+    <version>1.21.7-R0.2</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>

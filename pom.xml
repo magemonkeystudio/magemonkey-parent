@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.7-R0.2</version>
+    <version>1.21.8-R0.1</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
@@ -19,15 +19,15 @@
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
         <maven.compiler.proc>full</maven.compiler.proc>
 
-        <codex.version>1.1.1-R0.3-SNAPSHOT</codex.version>
+        <codex.version>1.1.1-R0.7-SNAPSHOT</codex.version>
         <divinity.version>1.0.2-R0.45-SNAPSHOT</divinity.version>
         <fabled.version>1.0.4-R0.56-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.7-R0.1-SNAPSHOT</spigot.version>
-        <bungee.version>1.21-R0.1-SNAPSHOT</bungee.version>
+        <spigot.version>1.21.8-R0.1-SNAPSHOT</spigot.version>
+        <bungee.version>1.21-R0.3-SNAPSHOT</bungee.version>
 
-        <mockbukkit.version>4.61.0</mockbukkit.version>
+        <mockbukkit.version>4.72.7</mockbukkit.version>
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.14.0</apache.version>
@@ -191,7 +191,7 @@
             <dependency>
                 <groupId>com.mojang</groupId>
                 <artifactId>authlib</artifactId>
-                <version>6.0.54</version>
+                <version>6.0.58</version>
                 <scope>provided</scope>
                 <exclusions>
                     <exclusion>

@@ -6,7 +6,7 @@
     <parent>
         <groupId>studio.magemonkey</groupId>
         <artifactId>magemonkey-parent</artifactId>
-        <version>1.21.7-R0.3</version>
+        <version>1.21.8-R1</version>
     </parent>
 
     <artifactId>genesis-parent</artifactId>
@@ -29,6 +29,17 @@
         <module>genesis-quickshops</module>
         <module>genesis-trickyshops</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>magemonkey-releases</id>
+            <url>https://repo.travja.dev/releases</url>
+        </repository>
+        <repository>
+            <id>magemonkey-snapshots</id>
+            <url>https://repo.travja.dev/releases</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>

@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.8-R0.2</version>
+    <version>1.21.8-R1</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
@@ -27,12 +27,13 @@
         <spigot.version>1.21.8-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.3-SNAPSHOT</bungee.version>
 
-        <mockbukkit.version>4.72.7</mockbukkit.version>
+        <mockbukkit.version>4.76.0</mockbukkit.version>
+        <test.paper.version>1.21.8-R0.1-SNAPSHOT</test.paper.version>
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.18.0</apache.version>
         <lombok.version>1.18.38</lombok.version>
-        <nexus.url>https://central.sonatype.com</nexus.url>
+        <deploy.url>https://repo.travja.dev</deploy.url>
         <outputDir>../build</outputDir>
     </properties>
 
@@ -115,6 +116,10 @@
         <dependency>
             <groupId>org.mockbukkit.mockbukkit</groupId>
             <artifactId>mockbukkit-v1.21</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -332,6 +337,12 @@
                 </exclusions>
             </dependency>
             <dependency>
+                <groupId>io.papermc.paper</groupId>
+                <artifactId>paper-api</artifactId>
+                <version>${test.paper.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>5.19.0</version>
@@ -392,17 +403,6 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.8.0</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <publishingServerId>central</publishingServerId>
-                            <autoPublish>true</autoPublish>
-                            <waitUntil>published</waitUntil>
-                        </configuration>
-                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
@@ -626,4 +626,15 @@
         <developerConnection>scm:git:ssh://github.com:magemonkeystudio/${project.artifactId}.git</developerConnection>
         <url>https://github.com/magemonkeystudio/${project.artifactId}</url>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>magemonkey-repo</id>
+            <url>${deploy.url}/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>magemonkey-repo</id>
+            <url>${deploy.url}/releases</url>
+        </repository>
+    </distributionManagement>
 </project>

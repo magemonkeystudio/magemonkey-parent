@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.8-R1</version>
+    <version>1.21.10-R1</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
@@ -19,13 +19,13 @@
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
         <maven.compiler.proc>full</maven.compiler.proc>
 
-        <codex.version>1.1.1-R0.7-SNAPSHOT</codex.version>
-        <divinity.version>1.0.2-R0.45-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.4-R0.56-SNAPSHOT</fabled.version>
+        <codex.version>1.1.1-R0.13-SNAPSHOT</codex.version>
+        <divinity.version>1.0.2-R0.52-SNAPSHOT</divinity.version>
+        <fabled.version>1.0.4-R0.67-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.8-R0.1-SNAPSHOT</spigot.version>
-        <bungee.version>1.21-R0.3-SNAPSHOT</bungee.version>
+        <spigot.version>1.21.10-R0.1-SNAPSHOT</spigot.version>
+        <bungee.version>1.21-R0.4-SNAPSHOT</bungee.version>
 
         <mockbukkit.version>4.76.0</mockbukkit.version>
         <test.paper.version>1.21.8-R0.1-SNAPSHOT</test.paper.version>

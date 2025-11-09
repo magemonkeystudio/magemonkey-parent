@@ -6,7 +6,7 @@
     <parent>
         <groupId>studio.magemonkey</groupId>
         <artifactId>magemonkey-parent</artifactId>
-        <version>1.21.8-R1</version>
+        <version>1.21.10-R1</version>
     </parent>
 
     <artifactId>genesis-parent</artifactId>
@@ -37,7 +37,7 @@
         </repository>
         <repository>
             <id>magemonkey-snapshots</id>
-            <url>https://repo.travja.dev/releases</url>
+            <url>https://repo.travja.dev/snapshots</url>
         </repository>
     </repositories>
 

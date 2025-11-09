@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <genesis.version>1.0.2-R0.17-SNAPSHOT</genesis.version>
+        <genesis.version>1.0.2-R0.31-SNAPSHOT</genesis.version>
     </properties>
 
     <modules>

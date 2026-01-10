@@ -6,7 +6,7 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.10-R1</version>
+    <version>1.21.11-R1</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
@@ -19,12 +19,12 @@
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
         <maven.compiler.proc>full</maven.compiler.proc>
 
-        <codex.version>1.1.1-R0.13-SNAPSHOT</codex.version>
-        <divinity.version>1.0.2-R0.52-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.4-R0.67-SNAPSHOT</fabled.version>
+        <codex.version>1.1.1-R0.17-SNAPSHOT</codex.version>
+        <divinity.version>1.0.2-R0.55-SNAPSHOT</divinity.version>
+        <fabled.version>1.0.4-R0.76-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.10-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.21.11-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.4-SNAPSHOT</bungee.version>
 
         <mockbukkit.version>4.76.0</mockbukkit.version>
@@ -72,7 +72,7 @@
         <!-- LibsDisguises (and others?) -->
         <repository>
             <id>md_5-public</id>
-            <url>https://repo.md-5.net/content/groups/public/</url>
+            <url>https://repo.md-5.net/content/repositories/public/</url>
         </repository>
         <!-- Bungee Repo -->
         <repository>

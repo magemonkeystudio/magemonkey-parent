@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
-    <description>The parent artifact for MageMonkeyStudio modules</description>
+    <description>The parent artifact for VoidEdge modules</description>
     <url>https://github.com/magemonkeystudio/magemonkey-parent</url>
 
     <properties>
@@ -69,7 +69,7 @@
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- LibsDisguises (and others?) -->
+        <!-- Misc repository -->
         <repository>
             <id>md_5-public</id>
             <url>https://repo.md-5.net/content/repositories/public/</url>
@@ -615,9 +615,9 @@
 
     <developers>
         <developer>
-            <name>MageMonkeyStudio</name>
-            <organization>MageMonkeyStudio</organization>
-            <organizationUrl>https://magemonkey.studio</organizationUrl>
+            <name>VoidEdge</name>
+            <organization>VoidEdge</organization>
+            <organizationUrl>https://void.travja.dev</organizationUrl>
         </developer>
     </developers>
 

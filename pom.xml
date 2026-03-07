@@ -56,8 +56,8 @@
 
     <repositories>
         <repository>
-            <id>sonatype</id>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <id>magemonkey-snapshots</id>
+            <url>https://repo.travja.dev/snapshots</url>
         </repository>
         <!-- Spigot Repo -->
         <repository>
@@ -77,7 +77,7 @@
         <!-- Bungee Repo -->
         <repository>
             <id>bungeecord-repo</id>
-            <url>https://oss.sonatype.org/content/groups/public</url>
+            <url>https://repo.travja.dev/snapshots</url>
         </repository>
         <!-- Mythic Mobs Repo -->
         <repository>

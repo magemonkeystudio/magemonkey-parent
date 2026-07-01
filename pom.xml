@@ -24,7 +24,7 @@
         <fabled.version>1.0.4-R0.76-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.11-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>26.2-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.4-SNAPSHOT</bungee.version>
 
         <mockbukkit.version>4.76.0</mockbukkit.version>

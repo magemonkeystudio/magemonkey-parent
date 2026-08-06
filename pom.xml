@@ -21,7 +21,7 @@
 
         <codex.version>1.1.1-R0.17-SNAPSHOT</codex.version>
         <divinity.version>1.0.2-R0.55-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.4-R0.76-SNAPSHOT</fabled.version>
+        <fabled.version>1.0.4-R0.100-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
         <spigot.version>26.2-R0.1-SNAPSHOT</spigot.version>

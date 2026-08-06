@@ -507,6 +507,9 @@
             <resource>
                 <filtering>true</filtering>
                 <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/CLAUDE.md</exclude>
+                </excludes>
             </resource>
         </resources>
         <plugins>

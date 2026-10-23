@@ -1,23 +1,30 @@
 name: Deploy Parent POM
 
 # Publishes ONLY the parent POM (mvn -N). Submodules are never checked out, built or deployed.
-# Release vs. snapshot is decided by the version in pom.xml: *-SNAPSHOT goes to /snapshots,
-# anything else goes to /releases. A release version that already exists is refused.
+#
+# The version is <MC version>-R<n>. The MC version comes from <version> in pom.xml; n is one
+# more than the highest R already tagged in git or published for that MC version, unless a
+# version is given by hand. Nothing is committed: the version is set in the runner only and
+# recorded as a git tag. *-SNAPSHOT versions go to /snapshots and are not tagged.
 
 on:
   workflow_dispatch:
     inputs:
+      version:
+        description: 'Version to publish (e.g. 1.21.11-R3). Empty for the next R of the MC version in pom.xml'
+        type: string
+        default: ''
       dry_run:
-        description: 'Run the checks and sign the POM, but do not deploy'
+        description: 'Only compute the version, run the checks and sign the POM; do not tag or deploy'
         type: boolean
         default: false
+
+permissions:
+  contents: write   # push the release tag
 
 concurrency:
   group: deploy-parent-pom
   cancel-in-progress: false
-
-permissions:
-  contents: read
 
 jobs:
   deploy:
@@ -26,6 +33,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: Checkout repo
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_PAT || github.token }}
+      - name: Configure git
+        run: |
+          git config --global user.name "Build Monkey"
+          git config --global user.email "<>"
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -36,17 +50,40 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
-      - name: Read version
+      - name: Compute version
         id: version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          version=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -DforceStdout)
-          deploy_url=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=deploy.url -DforceStdout)
-          group_path=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.groupId -DforceStdout | tr . /)
-          artifact_id=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.artifactId -DforceStdout)
+          evaluate() { mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression="$1" -DforceStdout; }
+          pom_version=$(evaluate project.version)
+          deploy_url=$(evaluate deploy.url)
+          group_path=$(evaluate project.groupId | tr . /)
+          artifact_id=$(evaluate project.artifactId)
+
+          if [ -n "$INPUT_VERSION" ]; then
+            version=$INPUT_VERSION
+            if ! [[ "$version" =~ ^[0-9]+(\.[0-9]+)*-R[0-9]+(\.[0-9]+)?(-SNAPSHOT)?$ ]]; then
+              echo "::error::'$version' does not look like <MC version>-R<n>, e.g. 1.21.11-R3."
+              exit 1
+            fi
+          else
+            mc=${pom_version%%-*}
+            # Highest R for this MC version among git tags and published releases (R2.1 counts as 2)
+            published=$(curl -sSf --retry 3 --max-time 30 "$deploy_url/releases/$group_path/$artifact_id/maven-metadata.xml" \
+              | grep -o '<version>[^<]*</version>' | sed 's#</\?version>##g' || true)
+            highest=$( { git tag -l; echo "$published"; } \
+              | grep -E "^${mc//./\\.}-R[0-9]+(\.[0-9]+)?$" | sed -E 's/.*-R([0-9]+).*/\1/' | sort -n | tail -1 || true)
+            version="$mc-R$(( ${highest:-0} + 1 ))"
+            echo "Highest R for $mc so far: ${highest:-none}"
+          fi
+
           if [[ "$version" == *-SNAPSHOT ]]; then repo=snapshots; else repo=releases; fi
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "repo=$repo" >> "$GITHUB_OUTPUT"
-          echo "pom_url=$deploy_url/$repo/$group_path/$artifact_id/$version/$artifact_id-$version.pom" >> "$GITHUB_OUTPUT"
+          {
+            echo "version=$version"
+            echo "repo=$repo"
+            echo "pom_url=$deploy_url/$repo/$group_path/$artifact_id/$version/$artifact_id-$version.pom"
+          } >> "$GITHUB_OUTPUT"
           echo "Version: $version ($repo)"
 
       - name: Refuse to overwrite a published release
@@ -55,13 +92,17 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
           POM_URL: ${{ steps.version.outputs.pom_url }}
         run: |
+          if git rev-parse -q --verify "refs/tags/$VERSION" > /dev/null; then
+            echo "::error::Tag $VERSION already exists. Pick another version."
+            exit 1
+          fi
           status=$(curl -sS -o /dev/null -I --retry 3 --max-time 30 -w '%{http_code}' "$POM_URL" || true)
           case "$status" in
             404)
               echo "$VERSION is not published yet: OK to deploy."
               ;;
             200)
-              echo "::error::$VERSION is already published at $POM_URL. Bump the version in pom.xml before deploying."
+              echo "::error::$VERSION is already published at $POM_URL. Pick another version."
               exit 1
               ;;
             *)
@@ -76,11 +117,35 @@ jobs:
           githubServer: false
           servers: '[{"id": "magemonkey-repo", "username": "${{ secrets.REPO_USERNAME }}", "password": "${{ secrets.DEPLOY_KEY }}"}]'
 
+      # Only changes the runner's copy of pom.xml; nothing is committed
+      - name: Set version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: mvn -B -q -N org.codehaus.mojo:versions-maven-plugin:2.18.0:set -DnewVersion="$VERSION" -DgenerateBackupPoms=false
+
+      # Pushing the tag before deploying claims the version: if another run already
+      # released it, the push fails and nothing gets published twice.
+      - name: Tag release
+        id: tag
+        if: ${{ steps.version.outputs.repo == 'releases' && !inputs.dry_run }}
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git tag -a "$VERSION" -m "Release $VERSION"
+          git push origin "refs/tags/$VERSION"
+
       - name: Publish to Travja Repo
+        id: deploy
         env:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           GOAL: ${{ inputs.dry_run && 'verify' || 'deploy' }}
         run: mvn -B -N clean "$GOAL" -P gpg,publish -DcreateChecksum=true
+
+      - name: Release the tag after a failed deploy
+        if: ${{ failure() && steps.tag.outcome == 'success' && steps.deploy.outcome == 'failure' }}
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: git push origin ":refs/tags/$VERSION"
 
       - name: Summary
         env:
@@ -90,7 +155,7 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run }}
         run: |
           if [[ "$DRY_RUN" == "true" ]]; then
-            echo "Dry run: \`$VERSION\` would be deployed to \`$REPO\` (not deployed)." >> "$GITHUB_STEP_SUMMARY"
+            echo "Dry run: \`$VERSION\` would be deployed to \`$REPO\` (not tagged or deployed)." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Deployed \`$VERSION\` to \`$REPO\`: ${POM_URL%/*}/" >> "$GITHUB_STEP_SUMMARY"
           fi

@@ -46,14 +46,17 @@ git clone --recurse-submodules git@github.com:magemonkeystudio/magemonkey-parent
 The parent POM (`studio.magemonkey:magemonkey-parent`) is published by the **Deploy Parent POM** GitHub Action
 (`.github/workflows/deploy-parent.yml`). It only deploys this POM (`mvn -N`). It never builds or deploys the submodules.
 
-To cut a release:
+To cut a release, go to **Actions → Deploy Parent POM → Run workflow**, pick the branch and run it.
 
-1. Set `<version>` in `pom.xml` to the new version (e.g. `1.21.11-R3`) and merge that to the branch you release from.
-2. Go to **Actions → Deploy Parent POM → Run workflow**, pick that branch and run it.
-   Tick **dry_run** first if you want to check the version and signing without deploying anything.
-3. Plugins can then use the new version as their `<parent>`.
+- Leave **version** empty to publish the next R for the Minecraft version in `pom.xml`. For example, if `1.21.11-R2`
+  is the highest one tagged or published, it publishes `1.21.11-R3`. There's no need to bump the version in `pom.xml`.
+- Or type a version, e.g. `1.21.11-R5`. A `-SNAPSHOT` version goes to https://repo.travja.dev/snapshots
+  and is not tagged.
+- Tick **dry_run** to see which version it would publish and check signing, without tagging or deploying anything.
 
-The version decides where it goes. A `-SNAPSHOT` version is deployed to
-https://repo.travja.dev/snapshots and anything else to https://repo.travja.dev/releases.
-If a release version is already published, the workflow fails and nothing is overwritten, so bump the version and run it again.
-The workflow does not change the version, commit, or tag anything.
+A release is tagged in git (e.g. `1.21.11-R3`) and deployed to https://repo.travja.dev/releases. If that version is
+already tagged or published, the workflow fails and nothing is overwritten. Nothing is committed: the version is
+only set in the build, so `pom.xml` keeps whatever version it has.
+
+When moving to a new Minecraft version, change `<version>` in `pom.xml` to `<new MC version>-R0`. The next run
+then publishes `<new MC version>-R1`.

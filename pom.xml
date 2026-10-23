@@ -6,11 +6,11 @@
 
     <groupId>studio.magemonkey</groupId>
     <artifactId>magemonkey-parent</artifactId>
-    <version>1.21.11-R1</version>
+    <version>1.21.11-R2</version>
     <packaging>pom</packaging>
 
     <name>Mage Monkey Parent</name>
-    <description>The parent artifact for MageMonkeyStudio modules</description>
+    <description>The parent artifact for VoidEdge modules</description>
     <url>https://github.com/magemonkeystudio/magemonkey-parent</url>
 
     <properties>
@@ -19,12 +19,12 @@
         <maven.build.timestamp.format>wwuHHmm</maven.build.timestamp.format>
         <maven.compiler.proc>full</maven.compiler.proc>
 
-        <codex.version>1.1.1-R0.17-SNAPSHOT</codex.version>
+        <codex.version>1.2.0-R0.1-SNAPSHOT</codex.version>
         <divinity.version>1.0.2-R0.55-SNAPSHOT</divinity.version>
-        <fabled.version>1.0.4-R0.76-SNAPSHOT</fabled.version>
+        <fabled.version>1.0.4-R0.100-SNAPSHOT</fabled.version>
         <fabled-parties.version>1.0.1-R0.7-SNAPSHOT</fabled-parties.version>
 
-        <spigot.version>1.21.11-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>26.2-R0.1-SNAPSHOT</spigot.version>
         <bungee.version>1.21-R0.4-SNAPSHOT</bungee.version>
 
         <mockbukkit.version>4.76.0</mockbukkit.version>
@@ -56,8 +56,8 @@
 
     <repositories>
         <repository>
-            <id>sonatype</id>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <id>magemonkey-snapshots</id>
+            <url>https://repo.travja.dev/snapshots</url>
         </repository>
         <!-- Spigot Repo -->
         <repository>
@@ -69,7 +69,7 @@
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- LibsDisguises (and others?) -->
+        <!-- Misc repository -->
         <repository>
             <id>md_5-public</id>
             <url>https://repo.md-5.net/content/repositories/public/</url>
@@ -77,7 +77,7 @@
         <!-- Bungee Repo -->
         <repository>
             <id>bungeecord-repo</id>
-            <url>https://oss.sonatype.org/content/groups/public</url>
+            <url>https://repo.travja.dev/snapshots</url>
         </repository>
         <!-- Mythic Mobs Repo -->
         <repository>
@@ -104,11 +104,6 @@
         <repository>
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
-        </repository>
-
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
@@ -512,6 +507,9 @@
             <resource>
                 <filtering>true</filtering>
                 <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/CLAUDE.md</exclude>
+                </excludes>
             </resource>
         </resources>
         <plugins>
@@ -615,9 +613,9 @@
 
     <developers>
         <developer>
-            <name>MageMonkeyStudio</name>
-            <organization>MageMonkeyStudio</organization>
-            <organizationUrl>https://magemonkey.studio</organizationUrl>
+            <name>VoidEdge</name>
+            <organization>VoidEdge</organization>
+            <organizationUrl>https://void.travja.dev</organizationUrl>
         </developer>
     </developers>
 

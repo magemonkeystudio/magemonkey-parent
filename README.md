@@ -48,15 +48,16 @@ The parent POM (`studio.magemonkey:magemonkey-parent`) is published by the **Dep
 
 To cut a release, go to **Actions → Deploy Parent POM → Run workflow**, pick the branch and run it.
 
-- Leave **version** empty to publish the next R for the Minecraft version in `pom.xml`. For example, if `1.21.11-R2`
-  is the highest one tagged or published, it publishes `1.21.11-R3`. There's no need to bump the version in `pom.xml`.
-- Or type a version, e.g. `1.21.11-R5`. A `-SNAPSHOT` version goes to https://repo.travja.dev/snapshots
+- Leave **version** empty to publish the next R for the Minecraft version in `spigot.version` (e.g.
+  `26.2-R0.1-SNAPSHOT` → `26.2`). For example, if `26.2-R1` is the highest one tagged or published, it publishes
+  `26.2-R2`. There's no need to bump the version in `pom.xml`.
+- Or type a version, e.g. `26.2-R5`. A `-SNAPSHOT` version goes to https://repo.travja.dev/snapshots
   and is not tagged.
 - Tick **dry_run** to see which version it would publish and check signing, without tagging or deploying anything.
 
-A release is tagged in git (e.g. `1.21.11-R3`) and deployed to https://repo.travja.dev/releases. If that version is
+A release is tagged in git (e.g. `26.2-R2`) and deployed to https://repo.travja.dev/releases. If that version is
 already tagged or published, the workflow fails and nothing is overwritten. Nothing is committed: the version is
-only set in the build, so `pom.xml` keeps whatever version it has.
+only set in the build, so `<version>` in `pom.xml` keeps whatever it has and isn't used.
 
-When moving to a new Minecraft version, change `<version>` in `pom.xml` to `<new MC version>-R0`. The next run
-then publishes `<new MC version>-R1`.
+Moving to a new Minecraft version only needs the usual `spigot.version` bump. The next run then publishes
+`<new MC version>-R1`.

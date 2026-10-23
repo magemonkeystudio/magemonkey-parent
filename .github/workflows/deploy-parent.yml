@@ -2,16 +2,17 @@ name: Deploy Parent POM
 
 # Publishes ONLY the parent POM (mvn -N). Submodules are never checked out, built or deployed.
 #
-# The version is <MC version>-R<n>. The MC version comes from <version> in pom.xml; n is one
-# more than the highest R already tagged in git or published for that MC version, unless a
-# version is given by hand. Nothing is committed: the version is set in the runner only and
-# recorded as a git tag. *-SNAPSHOT versions go to /snapshots and are not tagged.
+# The version is <MC version>-R<n>. The MC version comes from spigot.version in pom.xml (e.g.
+# 26.2-R0.1-SNAPSHOT -> 26.2); n is one more than the highest R already tagged in git or
+# published for that MC version, unless a version is given by hand. Nothing is committed: the
+# version is set in the runner only and recorded as a git tag, so <version> in pom.xml is not
+# used. *-SNAPSHOT versions go to /snapshots and are not tagged.
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to publish (e.g. 1.21.11-R3). Empty for the next R of the MC version in pom.xml'
+        description: 'Version to publish (e.g. 26.2-R1). Empty for the next R of spigot.version in pom.xml'
         type: string
         default: ''
       dry_run:
@@ -56,7 +57,7 @@ jobs:
           INPUT_VERSION: ${{ inputs.version }}
         run: |
           evaluate() { mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression="$1" -DforceStdout; }
-          pom_version=$(evaluate project.version)
+          spigot_version=$(evaluate spigot.version)
           deploy_url=$(evaluate deploy.url)
           group_path=$(evaluate project.groupId | tr . /)
           artifact_id=$(evaluate project.artifactId)
@@ -64,11 +65,11 @@ jobs:
           if [ -n "$INPUT_VERSION" ]; then
             version=$INPUT_VERSION
             if ! [[ "$version" =~ ^[0-9]+(\.[0-9]+)*-R[0-9]+(\.[0-9]+)?(-SNAPSHOT)?$ ]]; then
-              echo "::error::'$version' does not look like <MC version>-R<n>, e.g. 1.21.11-R3."
+              echo "::error::'$version' does not look like <MC version>-R<n>, e.g. 26.2-R1."
               exit 1
             fi
           else
-            mc=${pom_version%%-*}
+            mc=${spigot_version%%-*}
             # Highest R for this MC version among git tags and published releases (R2.1 counts as 2)
             published=$(curl -sSf --retry 3 --max-time 30 "$deploy_url/releases/$group_path/$artifact_id/maven-metadata.xml" \
               | grep -o '<version>[^<]*</version>' | sed 's#</\?version>##g' || true)

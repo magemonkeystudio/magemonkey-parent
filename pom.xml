@@ -32,7 +32,7 @@
 
         <mysql.version>9.0.0</mysql.version>
         <apache.version>3.18.0</apache.version>
-        <lombok.version>1.18.38</lombok.version>
+        <lombok.version>1.18.48</lombok.version>
         <deploy.url>https://repo.travja.dev</deploy.url>
         <outputDir>../build</outputDir>
     </properties>

@@ -7,8 +7,13 @@ name: Deploy Parent POM
 # published for that MC version, unless a version is given by hand. Nothing is committed: the
 # version is set in the runner only and recorded as a git tag, so <version> in pom.xml is not
 # used. *-SNAPSHOT versions go to /snapshots and are not tagged.
+#
+# Runs on every push to dev that changes pom.xml (next R, released and tagged), or by hand.
 
 on:
+  push:
+    branches: [ dev ]
+    paths: [ pom.xml ]
   workflow_dispatch:
     inputs:
       version:

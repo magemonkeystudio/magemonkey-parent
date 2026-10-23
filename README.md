@@ -46,7 +46,9 @@ git clone --recurse-submodules git@github.com:magemonkeystudio/magemonkey-parent
 The parent POM (`studio.magemonkey:magemonkey-parent`) is published by the **Deploy Parent POM** GitHub Action
 (`.github/workflows/deploy-parent.yml`). It only deploys this POM (`mvn -N`). It never builds or deploys the submodules.
 
-To cut a release, go to **Actions → Deploy Parent POM → Run workflow**, pick the branch and run it.
+A release goes out automatically whenever a push to `dev` changes `pom.xml`: the workflow publishes the next R
+(see below) and tags it. To publish by hand, e.g. a specific version or from another branch, go to
+**Actions → Deploy Parent POM → Run workflow**, pick the branch and run it.
 
 - Leave **version** empty to publish the next R for the Minecraft version in `spigot.version` (e.g.
   `26.2-R0.1-SNAPSHOT` → `26.2`). For example, if `26.2-R1` is the highest one tagged or published, it publishes

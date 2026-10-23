@@ -40,3 +40,20 @@ git clone --recurse-submodules git@github.com:magemonkeystudio/magemonkey-parent
     $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo dev) \
     && git remote set-url origin git@github.com:magemonkeystudio/$name.git'
 ```
+
+## Publishing the Parent POM
+
+The parent POM (`studio.magemonkey:magemonkey-parent`) is published by the **Deploy Parent POM** GitHub Action
+(`.github/workflows/deploy-parent.yml`). It only deploys this POM (`mvn -N`). It never builds or deploys the submodules.
+
+To cut a release:
+
+1. Set `<version>` in `pom.xml` to the new version (e.g. `1.21.11-R3`) and merge that to the branch you release from.
+2. Go to **Actions → Deploy Parent POM → Run workflow**, pick that branch and run it.
+   Tick **dry_run** first if you want to check the version and signing without deploying anything.
+3. Plugins can then use the new version as their `<parent>`.
+
+The version decides where it goes. A `-SNAPSHOT` version is deployed to
+https://repo.travja.dev/snapshots and anything else to https://repo.travja.dev/releases.
+If a release version is already published, the workflow fails and nothing is overwritten, so bump the version and run it again.
+The workflow does not change the version, commit, or tag anything.

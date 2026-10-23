@@ -1,0 +1,96 @@
+name: Deploy Parent POM
+
+# Publishes ONLY the parent POM (mvn -N). Submodules are never checked out, built or deployed.
+# Release vs. snapshot is decided by the version in pom.xml: *-SNAPSHOT goes to /snapshots,
+# anything else goes to /releases. A release version that already exists is refused.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run the checks and sign the POM, but do not deploy'
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-parent-pom
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repo
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 21
+          server-id: ossrh
+          settings-path: ${{ github.workspace }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+
+      - name: Read version
+        id: version
+        run: |
+          version=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -DforceStdout)
+          deploy_url=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=deploy.url -DforceStdout)
+          group_path=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.groupId -DforceStdout | tr . /)
+          artifact_id=$(mvn -B -q -N org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.artifactId -DforceStdout)
+          if [[ "$version" == *-SNAPSHOT ]]; then repo=snapshots; else repo=releases; fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "repo=$repo" >> "$GITHUB_OUTPUT"
+          echo "pom_url=$deploy_url/$repo/$group_path/$artifact_id/$version/$artifact_id-$version.pom" >> "$GITHUB_OUTPUT"
+          echo "Version: $version ($repo)"
+
+      - name: Refuse to overwrite a published release
+        if: ${{ steps.version.outputs.repo == 'releases' }}
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          POM_URL: ${{ steps.version.outputs.pom_url }}
+        run: |
+          status=$(curl -sS -o /dev/null -I --retry 3 --max-time 30 -w '%{http_code}' "$POM_URL" || true)
+          case "$status" in
+            404)
+              echo "$VERSION is not published yet: OK to deploy."
+              ;;
+            200)
+              echo "::error::$VERSION is already published at $POM_URL. Bump the version in pom.xml before deploying."
+              exit 1
+              ;;
+            *)
+              echo "::error::Could not check whether $VERSION is published (HTTP $status from $POM_URL). Refusing to deploy."
+              exit 1
+              ;;
+          esac
+
+      - name: Create settings.xml
+        uses: s4u/maven-settings-action@v3.0.0
+        with:
+          githubServer: false
+          servers: '[{"id": "magemonkey-repo", "username": "${{ secrets.REPO_USERNAME }}", "password": "${{ secrets.DEPLOY_KEY }}"}]'
+
+      - name: Publish to Travja Repo
+        env:
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GOAL: ${{ inputs.dry_run && 'verify' || 'deploy' }}
+        run: mvn -B -N clean "$GOAL" -P gpg,publish -DcreateChecksum=true
+
+      - name: Summary
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          REPO: ${{ steps.version.outputs.repo }}
+          POM_URL: ${{ steps.version.outputs.pom_url }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [[ "$DRY_RUN" == "true" ]]; then
+            echo "Dry run: \`$VERSION\` would be deployed to \`$REPO\` (not deployed)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Deployed \`$VERSION\` to \`$REPO\`: ${POM_URL%/*}/" >> "$GITHUB_STEP_SUMMARY"
+          fi
